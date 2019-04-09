@@ -7,6 +7,9 @@ $dbname = "saikiran";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
+session_start();
+$_SESSION['authn'] = "fail";
+
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -32,21 +35,26 @@ switch($action){
         $sql = "SELECT `password` FROM login WHERE `username` = '$username'";
         $result = $conn->query($sql);
         if($result){
+            
             $response['success'] = true;
             $response['data'] = [];
             while($row = $result->fetch_assoc()) {
-                  $response['data'][] = $row;
-              }    
+                $_SESSION['authn']="pass";
+                $response['data'][] = $row;
+             }
+              
         }
         else{
+            
             $response['error'] = "Query failed.";
-            $response['sql'] = "SELECT * FROM login";
-           
+            $response['sql'] = "SELECT `password` FROM login WHERE `username` = '$username'";
         }
         break;
     default:
         echo"Not a valid action!";
  }
  $conn->close();
+ //echo($testString);
  header("Content-Type: application/json");
  echo json_encode($response);
+ ?>
