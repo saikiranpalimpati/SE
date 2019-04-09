@@ -1,7 +1,15 @@
+<?php
+session_start();
+session_destroy();
+?>
+<?php
+session_start();
+?>
 <html>
 
 <head>
     Admin Login
+    <link rel="stylesheet" href="samplestylr.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
@@ -79,6 +87,7 @@
                         else{
                             if(data['data'][0]['password']==$("#form_password").val()){
                                 $('#errorMsg').html('');
+                                window.location.replace("http://cs2.mwsu.edu/~sai/admin.php");
                             }
                             else{
                                 $('#errorMsg').css('color','red');
