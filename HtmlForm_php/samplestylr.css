@@ -1,0 +1,22 @@
+body{
+background-color: hsla(120, 100%, 50%, 0.3);
+}
+.h1{
+text-align: center;
+}
+
+#base{
+  align: center;
+  height: 200px;
+  width: 55%;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  padding-left: 170px;
+  background-color: hsla(197, 100%, 50%, 0.3); 
+  border-style: outset;
+}
+#after{
+    padding-top: 170px;
+    
+  padding-left: 480px;
+}
